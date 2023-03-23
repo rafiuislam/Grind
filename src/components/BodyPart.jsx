@@ -20,20 +20,21 @@ const BodyPart = ({ item }) => {
         borderBottomLeftRadius: "20px",
         borderBottomRightRadius: "20px",
         width: "200px",
-        height: "200px",
+        height: "50px",
         gap: "20px",
         cursor: "pointer",
       }}
       onClick={() => {
         setBodyPart(item);
-        window.scrollTo({ top: 1360, left: 100, behavior: "smooth" });
+
+        window.scrollTo({ top: 1600, left: 100, behavior: "smooth" });
       }}
     >
-      <img
+      {/* <img
         src={Icon}
         alt="bodyPart"
         style={{ width: "50px", height: "50px" }}
-      />
+      /> */}
       <Typography
         fontSize="24px"
         textTransform="capitalize"

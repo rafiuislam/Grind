@@ -43,7 +43,7 @@ const SearchExercises = () => {
           exercise.target.toLowerCase().includes(search.toLowerCase().trim())
       );
       setSearch("");
-      console.log(SearchedExercises);
+      // console.log(SearchedExercises);
       setExercises(SearchedExercises);
     }
   };
@@ -60,7 +60,13 @@ const SearchExercises = () => {
       >
         Awesome Exercises You <br /> Should Try
       </Typography>
-      <Box position="relative" mb="70px">
+      <Box
+        mb="20px"
+        sx={{ position: "relative", padding: "20px", width: "100%" }}
+      >
+        <HorizontalScrollbar data={bodyParts} />
+      </Box>
+      <Box position="relative" mb="50px">
         <TextField
           sx={{
             input: {
@@ -93,13 +99,13 @@ const SearchExercises = () => {
             width: { lg: "175px", xs: "80px" },
             fontSize: { lg: "20px", xs: "14px" },
           }}
-          onClick={handleSearch}
+          onClick={() => {
+            handleSearch();
+            window.scrollTo({ top: 1600, left: 100, behavior: "smooth" });
+          }}
         >
           Search
         </Button>
-      </Box>
-      <Box sx={{ position: "relative", padding: "20px", width: "100%" }}>
-        <HorizontalScrollbar data={bodyParts} />
       </Box>
     </Stack>
   );

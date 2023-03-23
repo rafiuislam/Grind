@@ -8,7 +8,7 @@ const HorizontalScrollbar = ({ data }) => {
       direction="row"
       justifyContent="space-evenly"
       alignItems="center"
-      gap={4}
+      gap={1}
       sx={{
         flexWrap: "wrap",
       }}
@@ -18,7 +18,7 @@ const HorizontalScrollbar = ({ data }) => {
           key={item.id || item}
           id={item.id || item}
           title={item.id || item}
-          m="5px"
+          m="3px"
         >
           <BodyPart item={item} />
         </Box>

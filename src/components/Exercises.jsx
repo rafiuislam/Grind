@@ -11,7 +11,7 @@ const Exercises = () => {
   const { setExercises, exercises, bodyPart } = useContext(UserContext);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 8;
+  const exercisesPerPage = 9;
 
   const indexOfLastExercise = currentPage * exercisesPerPage;
   const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
@@ -24,19 +24,48 @@ const Exercises = () => {
   const paginate = (e, value) => {
     setCurrentPage(value);
 
-    window.scrollTo({ top: 2200, behavior: "smooth" });
+    window.scrollTo({ top: 1600, left: 100, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const fetchExercisesData = async () => {
+      let exercisesData = [];
+
+      if (bodyPart === "all") {
+        exercisesData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises",
+          exerciseOptions
+        );
+      } else {
+        exercisesData = await fetchData(
+          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+          exerciseOptions
+        );
+      }
+      // console.log("exercisesData");
+      setExercises(exercisesData);
+    };
+    fetchExercisesData();
+  }, [bodyPart]);
+
   return (
-    <Box id="exercises" p="20px" mt="50px" sx={{ mt: { lg: "110px" } }}>
-      <Typography variant="h3" mb="46px">
-        Showing Results
+    <Box id="exercises" p="20px" mt="5px" sx={{ mt: { lg: "10px" } }}>
+      <Typography
+        variant="h3"
+        mb="46px"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        Results
       </Typography>
       <Stack
         direction="row"
         flexWrap="wrap"
         justifyContent="center"
-        sx={{ gap: { lg: "110px", xs: "50px" } }}
+        sx={{ gap: { lg: "20px", xs: "15px" } }}
       >
         {currentExercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />

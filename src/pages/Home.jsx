@@ -9,6 +9,7 @@ import { UserContext } from "./UserContext";
 const Home = () => {
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
+
   return (
     <UserContext.Provider
       value={{ setBodyPart, bodyPart, setExercises, exercises }}
